@@ -20,4 +20,4 @@ jobs:
 
       - name: Run AWS CLI Script
         run: |
-          chmod +x Lesson/clean_job.sh
+          chmod +x clean_job.sh
