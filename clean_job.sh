@@ -1,4 +1,4 @@
-cleanup() {
+#!/bin/bash
   echo "Cleaning up resources..."
 
   # Terminate EC2 instances
@@ -6,9 +6,6 @@ cleanup() {
 
   # Wait for instances to terminate
   aws ec2 wait instance-terminated --instance-ids $(aws ec2 describe-instances --filters "Name=tag:Name,Values=MyEC2Instance" --query 'Reservations[].Instances[].InstanceId' --output text)
-
-  # Delete key pair
-  aws ec2 delete-key-pair --key-name ec2Key
 
   # Disassociate and delete route table
   aws ec2 disassociate-route-table --association-id $(aws ec2 describe-route-tables --filters "Name=tag:Name,Values=MyRouteTable" --query 'RouteTables[].Associations[].RouteTableAssociationId' --output text)
@@ -35,5 +32,4 @@ cleanup() {
   aws ec2 delete-vpc --vpc-id $vpc_id
 
   echo "Clean-up completed!"
-}
 
