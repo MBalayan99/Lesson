@@ -20,7 +20,7 @@ jobs:
 
       - name: Run AWS CLI Script
         run: |
-          chmod +x CreatEc2.sh
-          ./CreatEc2.sh
+          chmod +x CreatEc2_2.sh
+          ./CreatEc2_2.sh
           chmod +x clean_job.sh
           ./clean_job.sh
